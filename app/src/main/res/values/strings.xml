@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ThomasMensageria</string>
+    <string name="app_name">Thomas Mensageria</string>
     <string name="login.message.mail">Correo electrónico</string>
     <string name="login.message.password">Contraseña</string>
     <string name="login.button.signin">Iniciar sesión</string>
