@@ -15,7 +15,7 @@ public class FirebaseHelper {
     private final static String FIREBASE_URL = "https://mensajeria-20caa.firebaseio.com";
 
     public FirebaseHelper() {
-        this.dataReference = new FirebaseDatabase(FIREBASE_URL);
+        //this.dataReference = new FirebaseDatabase(FIREBASE_URL);
     }
 
     public FirebaseDatabase getDataReference() {
