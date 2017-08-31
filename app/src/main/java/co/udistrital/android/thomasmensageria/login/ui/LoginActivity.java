@@ -1,4 +1,4 @@
-package co.udistrital.android.thomasmensageria;
+package co.udistrital.android.thomasmensageria.login.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import co.udistrital.android.thomasmensageria.R;
 
 public class LoginActivity extends AppCompatActivity {
 

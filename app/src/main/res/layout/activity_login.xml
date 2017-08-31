@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:id="@+id/layoutMainContainer"
-    tools:context="co.udistrital.android.thomasmensageria.LoginActivity">
+    tools:context=".login.ui.LoginActivity">
 
 
     <ImageView
