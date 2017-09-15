@@ -2,13 +2,14 @@ package co.udistrital.android.thomasmensageria.login.ui;
 
 /**
  * Created by wisuarez on 31/08/2017.
+ * manipulamos la vista
  */
 
 public interface LoginView {
     void enableInputs();
     void disableInputs();
     void showProgress();
-    void hidProgress();
+    void hideProgress();
 
     void handleSingIn();
 

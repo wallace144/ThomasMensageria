@@ -3,4 +3,11 @@
     <string name="login.message.mail">Usuario</string>
     <string name="login.message.password">Contraseña</string>
     <string name="login.button.signin">Iniciar sesión</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="login.error.message.signin">Imposible iniciar sesion %s</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

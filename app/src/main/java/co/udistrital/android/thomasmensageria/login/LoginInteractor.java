@@ -1,4 +1,4 @@
-package co.udistrital.android.thomasmensageria.login.ui;
+package co.udistrital.android.thomasmensageria.login;
 
 /**
  * Created by wisuarez on 01/09/2017.

@@ -21,7 +21,7 @@ public class FirebaseHelper {
         private static final FirebaseHelper INSTANCE = new FirebaseHelper();
     }
 
-    private static FirebaseHelper getInstance(){
+    public static FirebaseHelper getInstance(){
         return SingletonHolper.INSTANCE;
     }
 
@@ -33,6 +33,7 @@ public class FirebaseHelper {
         return dataReference;
     }
 
+
     public String getAuthUserEmail(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = null;
@@ -41,6 +42,7 @@ public class FirebaseHelper {
         }
         return email;
     }
+
 
     /*public void notifyContactsOfConnectionChange(boolean online) {
         notifyContactsOfConnectionChange(online, false);
