@@ -36,7 +36,7 @@ public class LoginRepositoryImpl implements LoginRepository {
            auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                @Override
                public void onSuccess(AuthResult authResult) {
-                   Log.i("Resultado: "+authResult, "Mensaje de información");
+
                    postEvent(LoginEvent.onSignInSuccess);
                }
            }).addOnFailureListener(new OnFailureListener() {
@@ -53,7 +53,10 @@ public class LoginRepositoryImpl implements LoginRepository {
 
     @Override
     public void checkSesion() {
-        postEvent(LoginEvent.onFailedToRecoverSession);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null)
+            postEvent(LoginEvent.onSignInSuccess);
+        else
+            postEvent(LoginEvent.onFailedToRecoverSession);
     }
 
     private void postEvent(int type, String errorMessage){
