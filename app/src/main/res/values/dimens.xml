@@ -8,4 +8,6 @@
     <dimen name="avatar_size_marker">24dp</dimen>
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="icon_menu_height">125dp</dimen>
+    <dimen name="icon_menu_width">125dp</dimen>
 </resources>

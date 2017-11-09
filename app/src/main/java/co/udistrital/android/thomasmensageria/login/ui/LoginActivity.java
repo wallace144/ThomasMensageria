@@ -14,9 +14,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import co.udistrital.android.thomasmensageria.R;
-import co.udistrital.android.thomasmensageria.login.LoginPresenter;
 import co.udistrital.android.thomasmensageria.login.LoginPresenterImpl;
-import co.udistrital.android.thomasmensageria.main.MainActivity;
+import co.udistrital.android.thomasmensageria.main.ui.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 

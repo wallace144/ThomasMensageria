@@ -1,11 +1,10 @@
-package co.udistrital.android.thomasmensageria.main;
+package co.udistrital.android.thomasmensageria.main.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,13 +12,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import co.udistrital.android.thomasmensageria.R;
 import co.udistrital.android.thomasmensageria.domain.FirebaseHelper;
+import co.udistrital.android.thomasmensageria.get_route.GetRouteActivity;
 import co.udistrital.android.thomasmensageria.login.ui.LoginActivity;
+import co.udistrital.android.thomasmensageria.validate_route.ValidateRouteActivity;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MainView {
+    @BindView(R.id.linearObtenerRuta)
+    LinearLayout linearObtenerRuta;
+    @BindView(R.id.linearValidarRuta)
+    LinearLayout linearValidarRuta;
+    @BindView(R.id.linearRutaServicios)
+    LinearLayout linearRutaServicios;
+    @BindView(R.id.linearResumenRuta)
+    LinearLayout linearResumenRuta;
+    @BindView(R.id.linearCierreRuta)
+    LinearLayout linearCierreRuta;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
     private FirebaseHelper helper;
+
 
     public MainActivity() {
         this.helper = FirebaseHelper.getInstance();
@@ -29,6 +49,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -65,12 +86,12 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return  super.onCreateOptionsMenu(menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_logout){
+        if (item.getItemId() == R.id.action_logout) {
 
             helper.signOff();
             //presenter.signOff();
@@ -106,5 +127,32 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @OnClick(R.id.linearObtenerRuta)
+    @Override
+    public void navigateToGetRoute() {
+        startActivity(new Intent(this, GetRouteActivity.class));
+    }
+
+    @OnClick(R.id.linearValidarRuta)
+    @Override
+    public void navigateToValidateRoute() {
+        startActivity(new Intent(this, ValidateRouteActivity.class));
+    }
+
+    @Override
+    public void navigateToServicesRoute() {
+
+    }
+
+    @Override
+    public void navigateToSummaryRoute() {
+
+    }
+
+    @Override
+    public void navigateToCloseRoute() {
+
     }
 }
