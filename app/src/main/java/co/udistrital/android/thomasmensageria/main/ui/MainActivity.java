@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -23,6 +24,7 @@ import co.udistrital.android.thomasmensageria.domain.FirebaseHelper;
 import co.udistrital.android.thomasmensageria.get_route.GetRouteActivity;
 import co.udistrital.android.thomasmensageria.login.ui.LoginActivity;
 import co.udistrital.android.thomasmensageria.validate_route.ValidateRouteActivity;
+import co.udistrital.android.thomasmensageria.validate_route.ValidateRouteFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainView {
@@ -108,10 +110,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+           fragmentManager.beginTransaction().replace(R.id.content, new ValidateRouteFragment()).commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
