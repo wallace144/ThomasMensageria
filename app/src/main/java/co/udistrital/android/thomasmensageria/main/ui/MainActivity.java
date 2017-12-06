@@ -28,16 +28,7 @@ import co.udistrital.android.thomasmensageria.validate_route.ValidateRouteFragme
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainView {
-    @BindView(R.id.linearObtenerRuta)
-    LinearLayout linearObtenerRuta;
-    @BindView(R.id.linearValidarRuta)
-    LinearLayout linearValidarRuta;
-    @BindView(R.id.linearRutaServicios)
-    LinearLayout linearRutaServicios;
-    @BindView(R.id.linearResumenRuta)
-    LinearLayout linearResumenRuta;
-    @BindView(R.id.linearCierreRuta)
-    LinearLayout linearCierreRuta;
+
     @BindView(R.id.fab)
     FloatingActionButton fab;
     private FirebaseHelper helper;
@@ -72,6 +63,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content, new MainFragment()).commit();
     }
 
     @Override
@@ -117,13 +111,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
            fragmentManager.beginTransaction().replace(R.id.content, new ValidateRouteFragment()).commit();
         } else if (id == R.id.nav_gallery) {
-
+            fragmentManager.beginTransaction().replace(R.id.content, new MainFragment()).commit();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
-
+            fragmentManager.beginTransaction().replace(R.id.content, new MainFragment()).commit();
         } else if (id == R.id.nav_share) {
-
+            fragmentManager.beginTransaction().replace(R.id.content, new ValidateRouteFragment()).commit();
         } else if (id == R.id.nav_send) {
 
         }
@@ -133,13 +127,13 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @OnClick(R.id.linearObtenerRuta)
+    //@OnClick(R.id.linearObtenerRuta)
     @Override
     public void navigateToGetRoute() {
         startActivity(new Intent(this, GetRouteActivity.class));
     }
 
-    @OnClick(R.id.linearValidarRuta)
+    //@OnClick(R.id.linearValidarRuta)
     @Override
     public void navigateToValidateRoute() {
         startActivity(new Intent(this, ValidateRouteActivity.class));
