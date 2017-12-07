@@ -25,11 +25,6 @@
             android:name=".main.ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".get_route.GetRouteActivity"
-            android:label="@string/title_activity_get_route"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".validate_route.ValidateRouteActivity"></activity>
     </application>
 
 </manifest>
