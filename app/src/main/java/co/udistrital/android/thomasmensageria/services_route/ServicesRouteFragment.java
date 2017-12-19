@@ -81,12 +81,16 @@ public class ServicesRouteFragment extends Fragment {
     public void guardar() {
         byte[] signature = mSig.getBytes();
         Bitmap signature1 = mSig.getBitmap();
+        linear.setVisibility(View.GONE);
+        ivfirma.setVisibility(view.VISIBLE);
         ivfirma.setImageBitmap(signature1);
     }
 
     @OnClick(R.id.btnlimpiar)
     public void limpiar() {
         Toast.makeText(this.getContext(), "Limpiar", Toast.LENGTH_LONG).show();
+        ivfirma.setVisibility(view.GONE);
+        linear.setVisibility(View.VISIBLE);
         mSig.ClearCanvas();
 
     }
