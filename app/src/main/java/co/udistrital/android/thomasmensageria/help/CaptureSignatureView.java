@@ -12,6 +12,8 @@ import android.view.View;
 
 import java.io.ByteArrayOutputStream;
 
+import co.udistrital.android.thomasmensageria.services_route.ServicesRouteFragment;
+
 /**
  * Created by wisuarez on 11/12/2017.
  */
@@ -28,8 +30,8 @@ public class CaptureSignatureView extends View {
     private float TouchTolerance = 4;
     private float LineThickness = 4;
 
-    public CaptureSignatureView(Context context, AttributeSet attr) {
-        super(context, attr);
+    public CaptureSignatureView(ServicesRouteFragment context, AttributeSet attr) {
+        super(context.getContext(), attr);
         _Path = new Path();
         _BitmapPaint = new Paint(Paint.DITHER_FLAG);
         _paint = new Paint();
