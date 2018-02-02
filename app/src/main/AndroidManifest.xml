@@ -3,6 +3,7 @@
     package="co.udistrital.android.thomasmensageria">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".ThomasMensageriaApplication"
