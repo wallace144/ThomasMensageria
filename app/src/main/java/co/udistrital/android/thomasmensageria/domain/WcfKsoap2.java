@@ -5,4 +5,5 @@ package co.udistrital.android.thomasmensageria.domain;
  */
 
 public class WcfKsoap2 {
+
 }

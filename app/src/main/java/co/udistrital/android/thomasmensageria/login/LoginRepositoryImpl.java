@@ -22,6 +22,7 @@ public class LoginRepositoryImpl implements LoginRepository {
     private FirebaseHelper helper;
     private DatabaseReference dataReference;
     private DatabaseReference myUserReference;
+    private PruebaRepositoryBorrar repositoryBorrar;
 
 
     public LoginRepositoryImpl() {
@@ -31,7 +32,7 @@ public class LoginRepositoryImpl implements LoginRepository {
 
     @Override
     public void signIn(String email, String password) {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
+       FirebaseAuth auth = FirebaseAuth.getInstance();
        try {
            auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                @Override
@@ -49,6 +50,12 @@ public class LoginRepositoryImpl implements LoginRepository {
        }catch (Exception e){
            postEvent(LoginEvent.onSignInError, e.getMessage());
        }
+
+       //PRUEBA_SOAP
+       // repositoryBorrar = new PruebaRepositoryBorrar(email,password);
+        //repositoryBorrar.execute();
+
+
     }
 
     @Override

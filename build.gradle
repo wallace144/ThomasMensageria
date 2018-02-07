@@ -2,6 +2,7 @@
 
 buildscript {
     repositories {
+        maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
         jcenter()
     }
     dependencies {
@@ -14,10 +15,24 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
         jcenter()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext {
+    compileSdkVersion = 25
+    buildToolsVersion = '26.0.2'
+    minSdkVersion = 18
+    targetSdkVersion = 25
+
+    supportLibraryVersion = '25.3.1'
+    barcodescannerVersion = '1.9.8'
+    firebaseClientVersion = '10.2.6'
+    butterknifeVersion = '8.8.1'
+    eventbusVersion = '3.0.0'
+    ksoap2Version = '3.6.2'
 }
