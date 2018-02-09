@@ -35,4 +35,5 @@ ext {
     butterknifeVersion = '8.8.1'
     eventbusVersion = '3.0.0'
     ksoap2Version = '3.6.2'
+    circleImageVersion = '2.2.0'
 }

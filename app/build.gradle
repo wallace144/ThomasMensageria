@@ -26,21 +26,21 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
-
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+    compile "de.hdodenhof:circleimageview:$rootProject.ext.circleImageVersion"
     compile "me.dm7.barcodescanner:zxing:$rootProject.ext.barcodescannerVersion"
     compile "com.google.firebase:firebase-database:$rootProject.ext.firebaseClientVersion"
     compile "com.google.firebase:firebase-auth:$rootProject.ext.firebaseClientVersion"
-    compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
-    compile 'com.jakewharton:butterknife:8.8.1'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
-    testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    compile 'com.google.code.ksoap2-android:ksoap2-android:3.6.2'
+    compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+    compile "org.greenrobot:eventbus:$rootProject.ext.eventbusVersion"
+    compile "com.google.code.ksoap2-android:ksoap2-android:$rootProject.ext.ksoap2Version"
 }
 apply plugin: 'com.google.gms.google-services'
 
