@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/AppTheme.NoActionBar"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context=".main.ui.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarLayout"
@@ -18,7 +18,7 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_width="match_parent"
             android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@android:color/transparent"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
@@ -41,3 +41,4 @@
         android:src="@android:drawable/ic_input_add" />
 
 </android.support.design.widget.CoordinatorLayout>
+

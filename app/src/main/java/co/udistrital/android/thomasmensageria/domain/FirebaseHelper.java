@@ -14,6 +14,7 @@ public class FirebaseHelper {
     private final static String PRODUCT_PATH = "products";
     private final static String ROUTE_PATH = "routes";
     private final static String MESSENGER_PATH = "messengers";
+    private final static String CODE_TEST_PATH = "11";
 
     private final static String FIREBASE_URL = "https://mensajeria-20caa.firebaseio.com";
 
@@ -51,6 +52,15 @@ public class FirebaseHelper {
     public void signOff(){
         FirebaseAuth.getInstance().signOut();
         //notifyContactsOfConnectionChange(false,true);
+    }
+
+    public DatabaseReference getUserReferents(String email){
+        DatabaseReference userReference = null;
+
+        if (email != null){
+            userReference = dataReference.getRoot().child(MESSENGER_PATH).child(CODE_TEST_PATH );
+        }
+        return userReference;
     }
 
     /*public void notifyContactsOfConnectionChange(final boolean online, final boolean signoff) {

@@ -4,6 +4,7 @@ buildscript {
     repositories {
         maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
         jcenter()
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
@@ -17,6 +18,8 @@ allprojects {
     repositories {
         maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
         jcenter()
+        google()
+        mavenCentral()
     }
 }
 
