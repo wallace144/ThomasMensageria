@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -28,6 +29,7 @@ import com.bumptech.glide.RequestManager;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedInputStream;
@@ -60,6 +62,12 @@ public class MainActivity extends AppCompatActivity
     private FirebaseHelper helper;
     //private CircleImageView imageView;
     private ImageView imageView;
+    private TextView tvprofile_name;
+    private TextView tvprofile_email;
+    private TextView tvprofile_document;
+    private TextView tvprofile_position;
+
+
     private GlideImageLoader imageLoader;
 
 
@@ -76,7 +84,8 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        imageView = (CircleImageView) findViewById(R.id.profile_image);
+
+
         //imageView = (ImageView) findViewById(R.id.profile_image);
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -95,6 +104,14 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+
+        imageView = (CircleImageView) headerView.findViewById(R.id.profile_image);
+        tvprofile_name = (TextView) headerView.findViewById(R.id.tvprofile_name);
+        tvprofile_email = (TextView) headerView.findViewById(R.id.tvprofile_email);
+        tvprofile_document = (TextView) headerView.findViewById(R.id.tvprofile_document);
+        tvprofile_position = (TextView) headerView.findViewById(R.id.tvprofile_position);
+
         navigationView.setNavigationItemSelectedListener(this);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -174,14 +191,27 @@ public class MainActivity extends AppCompatActivity
         String currentEmail =helper.getAuthUserEmail().toString();
         Log.d("myTag", currentEmail);
         DatabaseReference profile = helper.getUserReferents(currentEmail);
-        profile.addValueEventListener(new ValueEventListener() {
+        Log.d("myTag", profile.toString());
+
+
+        profile.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                //RequestManager requestManager = Glide.with(getApplicationContext());
-                //ImageLoader loader = new GlideImageLoader(getApplicationContext());
-                //String url = "https://www.shareicon.net/data/512x512/2015/10/04/111640_personal_512x512.png";
-                //loader.load(imageView, url);
+                String url = dataSnapshot.child("url").getValue().toString();
+                String name = (dataSnapshot.child("nombre").getValue().toString()+" "+ dataSnapshot.child("apellido").getValue().toString()).toUpperCase();
+                String email = dataSnapshot.child("email").getValue().toString();
+                String document = "C.C "+dataSnapshot.child("cedula").getValue().toString();
+                String position = (dataSnapshot.child("cargo").getValue().toString()).toUpperCase();
+
+                ImageLoader loader = new GlideImageLoader(getApplicationContext());
+                loader.load(imageView, url);
+
+                tvprofile_name.setText(name);
+                tvprofile_email.setText(email);
+                tvprofile_document.setText(document);
+                tvprofile_position.setText(position);
+
 
 
                 Log.e("myTag",Uri.parse(dataSnapshot.child("url").getValue().toString()).toString());

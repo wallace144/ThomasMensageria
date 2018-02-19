@@ -50,7 +50,7 @@ public class GetRouteFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-       toolbar.getContext().getApplicationContext().setTheme(R.style.AppTheme_NoActionBar);
+
 
     }
 
