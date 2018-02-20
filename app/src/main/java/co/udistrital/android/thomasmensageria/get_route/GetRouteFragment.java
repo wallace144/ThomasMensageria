@@ -12,10 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DatabaseReference;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import co.udistrital.android.thomasmensageria.R;
+import co.udistrital.android.thomasmensageria.domain.FirebaseHelper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,8 +36,10 @@ public class GetRouteFragment extends Fragment {
     FloatingActionButton fab;
     Unbinder unbinder;
 
+    private FirebaseHelper helper;
+
     public GetRouteFragment() {
-        // Required empty public constructor
+        this.helper = FirebaseHelper.getInstance();
     }
 
 
@@ -51,6 +56,8 @@ public class GetRouteFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        DatabaseReference routeReference = helper.getRouteReferents();
+        routeReference.
 
     }
 

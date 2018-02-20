@@ -63,6 +63,11 @@ public class FirebaseHelper {
         return userReference;
     }
 
+    public DatabaseReference getRouteReferents(){
+        DatabaseReference routeReference = null;
+        return dataReference.getRef().child(ROUTE_PATH);
+    }
+
     /*public void notifyContactsOfConnectionChange(final boolean online, final boolean signoff) {
         final String myEmail = getAuthUserEmail();
     }*/
