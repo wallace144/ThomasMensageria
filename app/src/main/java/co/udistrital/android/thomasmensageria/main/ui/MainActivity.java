@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity
         Log.d("myTag", profile.toString());
 
 
-        profile.addListenerForSingleValueEvent(new ValueEventListener() {
+        profile.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 

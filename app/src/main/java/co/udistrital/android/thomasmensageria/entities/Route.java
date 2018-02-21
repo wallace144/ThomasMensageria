@@ -1,12 +1,20 @@
 package co.udistrital.android.thomasmensageria.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Created by wisuarez on 19/02/2018.
  */
 
+
+
+
 public class Route {
 
+    @JsonIgnore
     int id;
+
+    @JsonIgnore
     int idmensajero;
     int idproducto;
     String fecha_envio;
@@ -18,6 +26,7 @@ public class Route {
 
     public Route(){
     }
+
 
     public int getId() {
         return id;
