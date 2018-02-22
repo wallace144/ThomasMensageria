@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -44,9 +46,11 @@ public class GetRouteFragment extends Fragment {
     Unbinder unbinder;
 
     private FirebaseHelper helper;
+    private List<Route> routes;
 
     public GetRouteFragment() {
         this.helper = FirebaseHelper.getInstance();
+        routes = new ArrayList<>();
     }
 
 
@@ -68,14 +72,13 @@ public class GetRouteFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e("tag routeRef", dataSnapshot.toString());
-                try {
-                    Map<String, Object>  routes = (Map<String, Object>) dataSnapshot.getValue(Route.class);
-                    Log.i("tag_route", (String) routes.get("barrio"));
+               for(DataSnapshot snapshot:
+                   dataSnapshot.getChildren()){
+                   Route route =  dataSnapshot.getValue(Route.class);
+                   routes.add(route);
+                   Log.e("tag f", route.getBarrio());
 
-                }catch (Exception e){
-                    Log.i("tag error ", e.getMessage().toString());
-                }
-
+               }
             }
 
             @Override
