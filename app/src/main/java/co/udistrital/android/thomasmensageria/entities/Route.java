@@ -14,7 +14,6 @@ public class Route {
     @JsonIgnore
     int id;
 
-    @JsonIgnore
     int idmensajero;
     int idproducto;
     String fecha_envio;

@@ -74,9 +74,9 @@ public class GetRouteFragment extends Fragment {
                 Log.e("tag routeRef", dataSnapshot.toString());
                for(DataSnapshot snapshot:
                    dataSnapshot.getChildren()){
-                   Route route =  dataSnapshot.getValue(Route.class);
+                   Route route =  snapshot.getValue(Route.class);
                    routes.add(route);
-                   Log.e("tag f", route.getBarrio());
+                   Log.e("tag f", ""+route.getObservacion());
 
                }
             }
