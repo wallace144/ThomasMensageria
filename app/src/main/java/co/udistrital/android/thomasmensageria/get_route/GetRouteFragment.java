@@ -32,7 +32,7 @@ import co.udistrital.android.thomasmensageria.entities.Route;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GetRouteFragment extends Fragment {
+public class GetRouteFragment extends Fragment implements RouteListView{
 
 
     @BindView(R.id.toolbar)
@@ -93,5 +93,20 @@ public class GetRouteFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onRouteAdd(Route route) {
+
+    }
+
+    @Override
+    public void onRouteRemoved(Route route) {
+
+    }
+
+    @Override
+    public void onRouteChanged(Route route) {
+
     }
 }
