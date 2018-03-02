@@ -45,6 +45,7 @@ import butterknife.ButterKnife;
 import co.udistrital.android.thomasmensageria.R;
 import co.udistrital.android.thomasmensageria.close_route.CloseRouteFragment;
 import co.udistrital.android.thomasmensageria.domain.FirebaseHelper;
+import co.udistrital.android.thomasmensageria.entities.Messenger;
 import co.udistrital.android.thomasmensageria.get_route.GetRouteFragment;
 import co.udistrital.android.thomasmensageria.lib.GlideImageLoader;
 import co.udistrital.android.thomasmensageria.lib.ImageLoader;
@@ -55,7 +56,7 @@ import co.udistrital.android.thomasmensageria.validate_route.ValidateRouteFragme
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener, MainView{
 
     /*@BindView(R.id.fab)
     FloatingActionButton fab;*/
@@ -86,16 +87,6 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        //imageView = (ImageView) findViewById(R.id.profile_image);
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -226,4 +217,35 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showUIElements() {
+
+    }
+
+    @Override
+    public void hideUIElements() {
+
+    }
+
+    @Override
+    public void setUser(Messenger messenger) {
+
+    }
+
+    @Override
+    public void onGetUserError(String error) {
+
+    }
 }

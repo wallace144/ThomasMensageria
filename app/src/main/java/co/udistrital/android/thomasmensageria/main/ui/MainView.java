@@ -9,6 +9,11 @@ import co.udistrital.android.thomasmensageria.entities.Messenger;
  */
 
 public interface MainView {
+    void showProgress();
+    void hideProgress();
+
+    void showUIElements();
+    void hideUIElements();
 
     void setUser(Messenger messenger);
     void onGetUserError(String error);
