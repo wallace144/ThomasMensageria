@@ -6,14 +6,20 @@ package co.udistrital.android.thomasmensageria.main;
 
 public class MainInteractorImpl implements MainInteractor {
 
+    private MainRepository mainRepository;
 
-    @Override
-    public void signOff() {
 
+    public MainInteractorImpl() {
+        mainRepository = new MainRepositoryImpl();
     }
 
     @Override
-    public void execute() {
+    public void signOff() {
+        mainRepository.signoff();
+    }
 
+    @Override
+    public void updateProfileShow() {
+        mainRepository.updateProfileShow();
     }
 }

@@ -9,9 +9,21 @@ import co.udistrital.android.thomasmensageria.main.events.MainEvent;
  */
 
 public class MainPresenterImpl  implements MainPresenter{
+
+    private MainInteractor mainInteractor;
+
+    public MainPresenterImpl() {
+        mainInteractor = new MainInteractorImpl();
+    }
+
     @Override
     public void signOff() {
+        mainInteractor.signOff();
+    }
 
+    @Override
+    public void updateProfileShow() {
+        mainInteractor.updateProfileShow();
     }
 
     @Override  @Subscribe

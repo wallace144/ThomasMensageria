@@ -45,13 +45,9 @@ public class FirebaseHelper {
     }
 
 
-    /*public void notifyContactsOfConnectionChange(boolean online) {
-        notifyContactsOfConnectionChange(online, false);
-    }*/
 
     public void signOff(){
         FirebaseAuth.getInstance().signOut();
-        //notifyContactsOfConnectionChange(false,true);
     }
 
     public DatabaseReference getUserReferents(String email){

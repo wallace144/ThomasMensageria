@@ -1,4 +1,4 @@
-package co.udistrital.android.thomasmensageria.get_route;
+package co.udistrital.android.thomasmensageria.get_route.ui;
 
 
 import android.os.Bundle;
@@ -20,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

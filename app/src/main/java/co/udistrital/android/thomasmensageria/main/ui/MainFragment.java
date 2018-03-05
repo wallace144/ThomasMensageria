@@ -15,7 +15,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import co.udistrital.android.thomasmensageria.R;
 import co.udistrital.android.thomasmensageria.close_route.CloseRouteFragment;
-import co.udistrital.android.thomasmensageria.get_route.GetRouteFragment;
+import co.udistrital.android.thomasmensageria.get_route.ui.GetRouteFragment;
 import co.udistrital.android.thomasmensageria.services_route.ServicesRouteFragment;
 import co.udistrital.android.thomasmensageria.summary_route.SummaryRouteFragment;
 import co.udistrital.android.thomasmensageria.validate_route.ValidateRouteFragment;

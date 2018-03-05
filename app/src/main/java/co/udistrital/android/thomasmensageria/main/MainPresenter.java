@@ -7,6 +7,8 @@ import co.udistrital.android.thomasmensageria.main.events.MainEvent;
  */
 
 public interface MainPresenter {
+
     void signOff();
+    void updateProfileShow();
     void onEventMainThread(MainEvent event);
 }

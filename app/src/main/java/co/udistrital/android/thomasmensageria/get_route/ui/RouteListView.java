@@ -1,4 +1,4 @@
-package co.udistrital.android.thomasmensageria.get_route;
+package co.udistrital.android.thomasmensageria.get_route.ui;
 
 import co.udistrital.android.thomasmensageria.entities.Route;
 
@@ -7,6 +7,7 @@ import co.udistrital.android.thomasmensageria.entities.Route;
  */
 
 public interface RouteListView {
+
     void onRouteAdd(Route route);
     void onRouteRemoved(Route route);
     void onRouteChanged(Route route);

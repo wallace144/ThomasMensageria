@@ -1,12 +1,8 @@
 package co.udistrital.android.thomasmensageria.main.ui;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -20,36 +16,24 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.BufferedInputStream;
-import java.io.Console;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.udistrital.android.thomasmensageria.R;
 import co.udistrital.android.thomasmensageria.close_route.CloseRouteFragment;
 import co.udistrital.android.thomasmensageria.domain.FirebaseHelper;
 import co.udistrital.android.thomasmensageria.entities.Messenger;
-import co.udistrital.android.thomasmensageria.get_route.GetRouteFragment;
+import co.udistrital.android.thomasmensageria.get_route.ui.GetRouteFragment;
 import co.udistrital.android.thomasmensageria.lib.GlideImageLoader;
 import co.udistrital.android.thomasmensageria.lib.ImageLoader;
 import co.udistrital.android.thomasmensageria.login.ui.LoginActivity;
+import co.udistrital.android.thomasmensageria.main.MainPresenter;
+import co.udistrital.android.thomasmensageria.main.MainPresenterImpl;
 import co.udistrital.android.thomasmensageria.services_route.ServicesRouteFragment;
 import co.udistrital.android.thomasmensageria.summary_route.SummaryRouteFragment;
 import co.udistrital.android.thomasmensageria.validate_route.ValidateRouteFragment;
@@ -58,24 +42,24 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainView{
 
-    /*@BindView(R.id.fab)
-    FloatingActionButton fab;*/
-    private FirebaseHelper helper;
-    //private CircleImageView imageView;
-    private ImageView imageView;
+
+    private CircleImageView imageView;
     private TextView tvprofile_name;
     private TextView tvprofile_email;
     private TextView tvprofile_document;
     private TextView tvprofile_position;
+    private ProgressBar progressBar;
+    private NavigationView navigationView;
 
+    private Messenger messenger;
+    private ImageLoader imageLoader;
 
-    private GlideImageLoader imageLoader;
+    private MainPresenter presenter;
 
 
     public MainActivity() {
-        this.helper = FirebaseHelper.getInstance();
-        updateProfileShow();
-
+        presenter = new MainPresenterImpl();
+        presenter.updateProfileShow();
     }
 
     @Override
@@ -94,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
         imageView = (CircleImageView) headerView.findViewById(R.id.profile_image);
@@ -102,6 +86,7 @@ public class MainActivity extends AppCompatActivity
         tvprofile_email = (TextView) headerView.findViewById(R.id.tvprofile_email);
         tvprofile_document = (TextView) headerView.findViewById(R.id.tvprofile_document);
         tvprofile_position = (TextView) headerView.findViewById(R.id.tvprofile_position);
+        progressBar = (ProgressBar) headerView.findViewById(R.id.progressBar);
 
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -131,8 +116,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_logout) {
 
-            helper.signOff();
-            //presenter.signOff();
+            //
+            presenter.signOff();
             Intent intent = new Intent(this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                     | Intent.FLAG_ACTIVITY_NEW_TASK
@@ -178,7 +163,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void updateProfileShow(){
+    /*public void updateProfileShow(){
         String currentEmail =helper.getAuthUserEmail().toString();
         Log.d("myTag", currentEmail);
         DatabaseReference profile = helper.getUserReferents(currentEmail);
@@ -214,38 +199,56 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-    }
+    }*/
 
 
 
 
     @Override
     public void showProgress() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void showUIElements() {
-
+        tvprofile_name.setVisibility(View.VISIBLE);
+        tvprofile_email.setVisibility(View.VISIBLE);
+        tvprofile_document.setVisibility(View.VISIBLE);
+        tvprofile_position.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideUIElements() {
-
+        tvprofile_name.setVisibility(View.GONE);
+        tvprofile_email.setVisibility(View.GONE);
+        tvprofile_document.setVisibility(View.GONE);
+        tvprofile_position.setVisibility(View.GONE);
     }
 
     @Override
-    public void setUser(Messenger messenger) {
+    public void setUser(Messenger user) {
+        this.messenger = user;
+        String name = (messenger.getNombre()+" "+ messenger.getApellido()).toUpperCase();
+        String document = "C.C "+messenger.getCedula();
+
+        imageLoader = new GlideImageLoader(getApplicationContext());
+        imageLoader.load(imageView, messenger.getUrl());
+
+        tvprofile_name.setText(name);
+        tvprofile_email.setText(messenger.getEmail());
+        tvprofile_document.setText(document);
+        tvprofile_position.setText(messenger.getCargo().toUpperCase());
 
     }
 
     @Override
     public void onGetUserError(String error) {
-
+        String msgError = String.format(getString(R.string.main_profile_update_notice),error);
+        Snackbar.make(navigationView,msgError,Snackbar.LENGTH_SHORT).show();
     }
 }
