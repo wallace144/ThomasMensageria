@@ -7,6 +7,7 @@ package co.udistrital.android.thomasmensageria.get_route;
 public interface RouteListInteractor {
     void subscribe();
     void unsubscribe();
-    void destroyListener();
     void removeRoute(String idRoute);
+
+
 }

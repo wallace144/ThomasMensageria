@@ -12,6 +12,9 @@ public interface RouteListPresenter {
     void onCreate();
     void onDestroy();
 
+    void subscribe();
+    void unsubscribe();
+
     void removeRoute(String idRoute);
     void onEventMainThread(RouteListEvent event);
 }
