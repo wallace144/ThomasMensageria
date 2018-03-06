@@ -95,6 +95,26 @@ public class GetRouteFragment extends Fragment implements RouteListView{
     }
 
     @Override
+    public void showList() {
+
+    }
+
+    @Override
+    public void hideList() {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
     public void onRouteAdd(Route route) {
 
     }
@@ -105,7 +125,9 @@ public class GetRouteFragment extends Fragment implements RouteListView{
     }
 
     @Override
-    public void onRouteChanged(Route route) {
+    public void onRouteError(String error) {
 
     }
+
+   
 }
