@@ -38,8 +38,8 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
         Route route = routeList.get(position);
         holder.setClickListener(route, onItemClickListener);
 
-        holder.txtGuide.setText(route.getId());
-        holder.txtClient.setText(route.getIdproducto());
+        holder.txtGuide.setText(""+route.getId());
+        holder.txtClient.setText(""+route.getIdproducto());
         holder.txtAddress.setText(route.getDireccion());
         holder.txtDate.setText(route.getFecha_envio());
     }

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/fragment_vertical_margin_top"
     tools:context="co.udistrital.android.thomasmensageria.main.ui.MainFragment">
 
     <LinearLayout
