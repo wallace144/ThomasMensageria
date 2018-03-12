@@ -31,6 +31,7 @@ import co.udistrital.android.thomasmensageria.R;
 import co.udistrital.android.thomasmensageria.domain.FirebaseHelper;
 import co.udistrital.android.thomasmensageria.entities.Route;
 import co.udistrital.android.thomasmensageria.get_route.RouteListPresenter;
+import co.udistrital.android.thomasmensageria.get_route.RouteListPresenterImpl;
 import co.udistrital.android.thomasmensageria.get_route.adapters.OnItemClickListener;
 import co.udistrital.android.thomasmensageria.get_route.adapters.RouteListAdapter;
 
@@ -60,6 +61,7 @@ public class GetRouteFragment extends Fragment implements RouteListView, OnItemC
     public GetRouteFragment() {
         this.helper = FirebaseHelper.getInstance();
         routes = new ArrayList<>();
+        presenter = new RouteListPresenterImpl(this);
 
     }
 

@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
 
 
     public MainActivity() {
-        presenter = new MainPresenterImpl();
+        presenter = new MainPresenterImpl(this);
         presenter.updateProfileShow();
     }
 
