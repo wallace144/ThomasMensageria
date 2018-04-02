@@ -49,5 +49,9 @@ public class MainPresenterImpl  implements MainPresenter{
     @Override  @Subscribe
     public void onEventMainThread(MainEvent event) {
 
+        if(this.mainView !=  null){
+            mainView.setUser(event.getUser());
+        }
+
     }
 }
