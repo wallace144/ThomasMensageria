@@ -55,11 +55,14 @@ public class MainActivity extends AppCompatActivity
     private ImageLoader imageLoader;
 
     private MainPresenter presenter;
+    private FirebaseHelper helper;
 
 
     public MainActivity() {
         presenter = new MainPresenterImpl(this);
-        presenter.updateProfileShow();
+        //presenter.updateProfileShow();
+        helper = new FirebaseHelper();//prueba
+        updateProfileShow();//prueba
     }
 
     @Override
@@ -163,7 +166,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    /*public void updateProfileShow(){
+    public void updateProfileShow(){
         String currentEmail =helper.getAuthUserEmail().toString();
         Log.d("myTag", currentEmail);
         DatabaseReference profile = helper.getUserReferents(currentEmail);
@@ -199,7 +202,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-    }*/
+    }
 
 
 

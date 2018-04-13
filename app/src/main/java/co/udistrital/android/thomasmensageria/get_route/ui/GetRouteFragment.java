@@ -84,7 +84,7 @@ public class GetRouteFragment extends Fragment implements RouteListView, OnItemC
         super.onActivityCreated(savedInstanceState);
 
         DatabaseReference routeReference = helper.getRouteReferents();
-        routeReference.addValueEventListener(new ValueEventListener() {
+        routeReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e("tag routeRef", dataSnapshot.toString());

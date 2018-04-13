@@ -16,6 +16,7 @@ public class Route {
 
     int idmensajero;
     int idproducto;
+    int id_guia;
     String fecha_envio;
     String direccion;
     String barrio;
@@ -97,5 +98,13 @@ public class Route {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public int getId_guia() {
+        return id_guia;
+    }
+
+    public void setId_guia(int id_guia) {
+        this.id_guia = id_guia;
     }
 }

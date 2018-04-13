@@ -13,6 +13,8 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="main_profile_update_notice">Error al cargar los datos %s</string>
+
     <string name="menu.icon.main">Inicio</string>
     <string name="menu.icon.get.route">Obtener ruta</string>
     <string name="menu.icon.validate.route">Validar ruta</string>
@@ -21,7 +23,5 @@
     <string name="menu.icon.close.route">Cierre ruta</string>
     <string name="title_activity_get_route">Obtener ruta</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="main_profile_update_notice">Error al cargar los datos %s</string>
+
 </resources>

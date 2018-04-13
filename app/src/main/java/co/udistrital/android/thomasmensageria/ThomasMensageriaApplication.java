@@ -2,7 +2,10 @@ package co.udistrital.android.thomasmensageria;
 
 import android.app.Application;
 
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.FirebaseApp;
+
+
+
 
 
 /**
@@ -19,7 +22,8 @@ public class ThomasMensageriaApplication extends Application {
 
     private void setupFirebase() {
 
-        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);//Persistencia en disco
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
+        FirebaseApp.initializeApp(FirebaseApp.getInstance().getApplicationContext());
+
     }
 }
