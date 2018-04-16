@@ -43,14 +43,23 @@ public class MainPresenterImpl  implements MainPresenter{
 
     @Override
     public void updateProfileShow() {
-        mainInteractor.updateProfileShow();
+        if (this.mainView != null){
+            mainView.hideUIElements();
+            mainView.showProgress();
+        }
+        mainInteractor.execute();
     }
 
     @Override  @Subscribe
     public void onEventMainThread(MainEvent event) {
-
+        String errorMsg = event.getError();
         if(this.mainView !=  null){
-            mainView.setUser(event.getUser());
+            mainView.showUIElements();
+            mainView.hideProgress();
+            if (errorMsg != null)
+                mainView.onGetUserError(errorMsg);
+            else
+                mainView.setUser(event.getUser());
         }
 
     }

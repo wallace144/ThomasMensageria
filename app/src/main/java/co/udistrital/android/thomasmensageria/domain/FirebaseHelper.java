@@ -1,5 +1,7 @@
 package co.udistrital.android.thomasmensageria.domain;
 
+import android.util.Log;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -17,6 +19,8 @@ public class FirebaseHelper {
     private final static String CODE_TEST_PATH = "11";
 
     private final static String FIREBASE_URL = "https://mensajeria-20caa.firebaseio.com";
+
+
 
     private static class SingletonHolper {
         private static final FirebaseHelper INSTANCE = new FirebaseHelper();
@@ -55,6 +59,8 @@ public class FirebaseHelper {
 
         if (email != null){
             userReference = dataReference.getRoot().child(MESSENGER_PATH).child(CODE_TEST_PATH );
+
+            //Log.e("myTag Listo",(dataReference.getRoot().child(MESSENGER_PATH).orderByChild("cedula")).toString());
         }
         return userReference;
     }
@@ -63,6 +69,7 @@ public class FirebaseHelper {
         DatabaseReference routeReference = null;
         return dataReference.getRef().child(ROUTE_PATH);
     }
+
 
     /*public void notifyContactsOfConnectionChange(final boolean online, final boolean signoff) {
         final String myEmail = getAuthUserEmail();

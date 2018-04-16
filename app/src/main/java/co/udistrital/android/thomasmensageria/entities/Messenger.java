@@ -1,13 +1,16 @@
 package co.udistrital.android.thomasmensageria.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Created by ASUS on 13/08/2016.
  */
 public class Messenger {
 
+    @JsonIgnore
     private int id;
+
     private String nombre;
     private String apellido;
     private String cedula;

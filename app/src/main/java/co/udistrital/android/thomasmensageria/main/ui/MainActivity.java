@@ -177,7 +177,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String url = dataSnapshot.child("url").getValue().toString();
+                Messenger messenger = dataSnapshot.getValue(Messenger.class);
+                setUser(messenger);
+                /*String url = dataSnapshot.child("url").getValue().toString();
                 String name = (dataSnapshot.child("nombre").getValue().toString()+" "+ dataSnapshot.child("apellido").getValue().toString()).toUpperCase();
                 String email = dataSnapshot.child("email").getValue().toString();
                 String document = "C.C "+dataSnapshot.child("cedula").getValue().toString();
@@ -192,8 +194,7 @@ public class MainActivity extends AppCompatActivity
                 tvprofile_position.setText(position);
 
 
-
-                Log.e("myTag",Uri.parse(dataSnapshot.child("url").getValue().toString()).toString());
+                Log.e("myTag",Uri.parse(dataSnapshot.child("url").getValue().toString()).toString());*/
             }
 
             @Override

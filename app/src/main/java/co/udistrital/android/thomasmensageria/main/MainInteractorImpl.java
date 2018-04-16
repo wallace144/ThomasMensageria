@@ -19,7 +19,7 @@ public class MainInteractorImpl implements MainInteractor {
     }
 
     @Override
-    public void updateProfileShow() {
+    public void execute() {
         mainRepository.updateProfileShow();
     }
 }
