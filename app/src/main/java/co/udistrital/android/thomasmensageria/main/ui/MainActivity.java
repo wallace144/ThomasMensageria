@@ -60,9 +60,7 @@ public class MainActivity extends AppCompatActivity
 
     public MainActivity() {
         presenter = new MainPresenterImpl(this);
-        //presenter.updateProfileShow();
-        helper = new FirebaseHelper();//prueba
-        updateProfileShow();//prueba
+        presenter.updateProfileShow();
     }
 
     @Override
@@ -72,8 +70,6 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -119,7 +115,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_logout) {
 
-            //
             presenter.signOff();
             Intent intent = new Intent(this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -165,47 +160,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    public void updateProfileShow(){
-        String currentEmail =helper.getAuthUserEmail().toString();
-        Log.d("myTag", currentEmail);
-        DatabaseReference profile = helper.getUserReferents(currentEmail);
-        Log.d("myTag", profile.toString());
-
-
-        profile.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Messenger messenger = dataSnapshot.getValue(Messenger.class);
-                setUser(messenger);
-                /*String url = dataSnapshot.child("url").getValue().toString();
-                String name = (dataSnapshot.child("nombre").getValue().toString()+" "+ dataSnapshot.child("apellido").getValue().toString()).toUpperCase();
-                String email = dataSnapshot.child("email").getValue().toString();
-                String document = "C.C "+dataSnapshot.child("cedula").getValue().toString();
-                String position = (dataSnapshot.child("cargo").getValue().toString()).toUpperCase();
-
-                ImageLoader loader = new GlideImageLoader(getApplicationContext());
-                loader.load(imageView, url);
-
-                tvprofile_name.setText(name);
-                tvprofile_email.setText(email);
-                tvprofile_document.setText(document);
-                tvprofile_position.setText(position);
-
-
-                Log.e("myTag",Uri.parse(dataSnapshot.child("url").getValue().toString()).toString());*/
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
-
 
 
     @Override

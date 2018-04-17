@@ -1,5 +1,6 @@
 package co.udistrital.android.thomasmensageria.main;
 
+import android.util.Log;
 import org.greenrobot.eventbus.Subscribe;
 
 import co.udistrital.android.thomasmensageria.lib.EventBus;
@@ -19,10 +20,9 @@ public class MainPresenterImpl  implements MainPresenter{
 
     public MainPresenterImpl(MainView mainView) {
         this.mainView = mainView;
-        eventBus = GreenRobotEventBus.getInstance();
+        this.eventBus = GreenRobotEventBus.getInstance();
         mainInteractor = new MainInteractorImpl();
     }
-
 
     @Override
     public void onCreate() {
@@ -44,18 +44,22 @@ public class MainPresenterImpl  implements MainPresenter{
     @Override
     public void updateProfileShow() {
         if (this.mainView != null){
-            mainView.hideUIElements();
-            mainView.showProgress();
+            //mainView.hideUIElements();
+            //mainView.showProgress();
         }
         mainInteractor.execute();
+
     }
 
-    @Override  @Subscribe
+
+    @Override
+    @Subscribe
     public void onEventMainThread(MainEvent event) {
         String errorMsg = event.getError();
+        Log.e("Prueba :", event.getUser().getEmail().toString());
         if(this.mainView !=  null){
-            mainView.showUIElements();
-            mainView.hideProgress();
+            //mainView.showUIElements();
+           // mainView.hideProgress();
             if (errorMsg != null)
                 mainView.onGetUserError(errorMsg);
             else

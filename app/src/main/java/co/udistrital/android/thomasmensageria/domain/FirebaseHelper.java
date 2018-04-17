@@ -59,8 +59,6 @@ public class FirebaseHelper {
 
         if (email != null){
             userReference = dataReference.getRoot().child(MESSENGER_PATH).child(CODE_TEST_PATH );
-
-            //Log.e("myTag Listo",(dataReference.getRoot().child(MESSENGER_PATH).orderByChild("cedula")).toString());
         }
         return userReference;
     }
@@ -69,6 +67,8 @@ public class FirebaseHelper {
         DatabaseReference routeReference = null;
         return dataReference.getRef().child(ROUTE_PATH);
     }
+
+
 
 
     /*public void notifyContactsOfConnectionChange(final boolean online, final boolean signoff) {
