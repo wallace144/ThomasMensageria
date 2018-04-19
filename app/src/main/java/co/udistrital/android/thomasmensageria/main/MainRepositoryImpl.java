@@ -1,7 +1,7 @@
 package co.udistrital.android.thomasmensageria.main;
 
-import android.util.Log;
 
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,32 +35,32 @@ public class MainRepositoryImpl implements MainRepository {
         profile.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 Messenger messenger = dataSnapshot.getValue(Messenger.class);
-                post(messenger);
+                postEvent(messenger);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                post(databaseError.toString());
+                postEvent(databaseError.toString());
             }
         });
 
     }
 
-    private void post(String error){
-        post(null, error);
+    private void postEvent(String error){
+        postEvent(null, error);
     }
 
-    private void post(Messenger user){
-        post(user, null);
+    private void postEvent(Messenger user){
+        postEvent(user, null);
     }
 
-    private void post(Messenger user, String error){
+    private void postEvent(Messenger user, String error){
         MainEvent event = new MainEvent();
         event.setError(error);
         event.setUser(user);
         eventBus = GreenRobotEventBus.getInstance();
+        Log.e("Prueba :", event.getUser().getEmail().toString());
         eventBus.post(event);
     }
 

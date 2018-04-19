@@ -10,7 +10,6 @@ public interface MainPresenter {
 
     void onCreate();
     void onDestroy();
-
     void signOff();
     void updateProfileShow();
     void onEventMainThread(MainEvent event);

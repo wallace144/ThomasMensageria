@@ -18,12 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
-import butterknife.ButterKnife;
 import co.udistrital.android.thomasmensageria.R;
 import co.udistrital.android.thomasmensageria.close_route.CloseRouteFragment;
 import co.udistrital.android.thomasmensageria.domain.FirebaseHelper;
@@ -39,6 +34,8 @@ import co.udistrital.android.thomasmensageria.summary_route.SummaryRouteFragment
 import co.udistrital.android.thomasmensageria.validate_route.ValidateRouteFragment;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainView{
 
@@ -50,26 +47,29 @@ public class MainActivity extends AppCompatActivity
     private TextView tvprofile_position;
     private ProgressBar progressBar;
     private NavigationView navigationView;
+    View headerView;
 
     private Messenger messenger;
     private ImageLoader imageLoader;
 
     private MainPresenter presenter;
-    private FirebaseHelper helper;
+
 
 
     public MainActivity() {
-        presenter = new MainPresenterImpl(this);
+        this.presenter = new MainPresenterImpl(this);
         presenter.updateProfileShow();
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        presenter.onCreate();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View headerView = navigationView.getHeaderView(0);
+        headerView = navigationView.getHeaderView(0);
 
         imageView = (CircleImageView) headerView.findViewById(R.id.profile_image);
         tvprofile_name = (TextView) headerView.findViewById(R.id.tvprofile_name);
@@ -92,6 +92,13 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content, new MainFragment()).commit();
         getSupportActionBar().setTitle(R.string.menu_icon_main);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 
     @Override
@@ -162,31 +169,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    @Override
-    public void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideProgress() {
-        progressBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showUIElements() {
-        tvprofile_name.setVisibility(View.VISIBLE);
-        tvprofile_email.setVisibility(View.VISIBLE);
-        tvprofile_document.setVisibility(View.VISIBLE);
-        tvprofile_position.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideUIElements() {
-        tvprofile_name.setVisibility(View.GONE);
-        tvprofile_email.setVisibility(View.GONE);
-        tvprofile_document.setVisibility(View.GONE);
-        tvprofile_position.setVisibility(View.GONE);
-    }
 
     @Override
     public void setUser(Messenger user) {
